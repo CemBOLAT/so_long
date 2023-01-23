@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cembolat <cembolat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 15:47:18 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/22 20:50:47 by cembolat         ###   ########.fr       */
+/*   Created: 2023/01/23 11:47:20 by cbolat            #+#    #+#             */
+/*   Updated: 2023/01/23 13:26:14 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 char	*get_next_line(int fd);
 char	*ft_read_left_to_right(int fd, char *d_line);
 char	*ft_get_strchr(char *s, int c);
-size_t	ft_get_strlen(char *s);
+size_t	ft_gstrlen(char *s);
 char	*ft_strconcat(char *d_line, char *buff);
 char	*ft_get_line(char *d_line);
 char	*ft_new_dinamic_line(char *d_line);

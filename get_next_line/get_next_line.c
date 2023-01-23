@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cembolat <cembolat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 15:47:14 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/22 20:56:22 by cembolat         ###   ########.fr       */
+/*   Created: 2023/01/23 13:24:55 by cbolat            #+#    #+#             */
+/*   Updated: 2023/01/23 13:26:49 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"get_next_line.h"
+#include "get_next_line.h"
 
 char	*ft_read_left_to_right(int fd, char *d_line)
 {

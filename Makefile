@@ -1,5 +1,6 @@
 NAME = so_long
 CFLAGS = -Wall -Wextra -Werror
+LFLAGS	=	-Lft_printf -Llibft -Lminilibx -lft -framework OpenGL -framework AppKit
 
 SO_LONG_SRC = *.c
 SO_LONG_OBJ = $(SO_LONG_SRC:.c=.o)
@@ -19,9 +20,10 @@ MINILIBX = minilibx.a
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(FT_PRINTF) $(GET_NEXT_LINE) $(SO_LONG) #minilibx
+$(NAME): $(LIBFT) $(FT_PRINTF) $(GET_NEXT_LINE) $(SO_LONG) $(MINILIBX) #minilibx
 	@echo "\033[32mGAME IS COMPILING...\033[0m"
-	@gcc $(CFLASGS) $(LIBFT) $(FT_PRINTF) $(GET_NEXT_LINE) $(SO_LONG) -o $(NAME)
+	@gcc $(CFLASGS) $(LFLAGS) $(LIBFT) $(FT_PRINTF) $(GET_NEXT_LINE) $(SO_LONG) $(MINILIBX) -o $(NAME)
+	@rm -rf *.a
 	@echo "\033[32mCOMPILATION SUCCESS...\033[0m"
 
 $(GET_NEXT_LINE) :
@@ -45,8 +47,8 @@ $(MINILIBX) :
 	@echo "\033[32mMINILIBX COMPILED\033[0m"
 
 $(SO_LONG) :
-	@gcc $(CFLAGS) -c $(SO_LONG_SRC)
-	@ar -rcs so_long.a $(SO_LONG_OBJ)
+	@make -C src/
+	@cp ./src/so_long.a .
 	@echo "\033[32mSO_LONG COMPILED\033[0m"
 
 clean:
@@ -55,6 +57,8 @@ clean:
 	@make clean -C libft/
 	@make clean -C ft_printf/
 	@make clean -C get_next_line/
+	@make clean -C minilibx/
+	@make clean -C src/
 	@echo "\033[32mCLEANED\033[0m"
 
 fclean: clean
@@ -62,6 +66,8 @@ fclean: clean
 	@rm -rf $(LIBFT) ./libft/$(LIBFT)
 	@rm -rf $(FT_PRINTF) ./ft_printf/$(FT_PRINTF)
 	@rm -rf $(GET_NEXT_LINE) ./get_next_line/$(GET_NEXT_LINE)
+	@rm -rf $(MINILIBX) ./get_next_line/$(MINILIBX)
+	@rm -rf so_long.a ./src/so_long.a
 	@rm -rf $(NAME)
 	@rm -rf *.a
 	@echo "\033[32mARCHIVE FILES WERE CLEANED\033[0m"
