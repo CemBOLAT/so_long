@@ -1,6 +1,6 @@
 NAME = so_long
 CFLAGS = -Wall -Wextra -Werror
-LFLAGS	=	-Lft_printf -Llibft -Lminilibx -lft -framework OpenGL -framework AppKit
+LFLAGS	=	-Lft_printf -Llibft -Lminilibx -framework OpenGL -framework AppKit
 
 SO_LONG_SRC = *.c
 SO_LONG_OBJ = $(SO_LONG_SRC:.c=.o)
