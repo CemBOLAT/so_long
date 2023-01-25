@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 13:24:55 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/23 13:26:49 by cbolat           ###   ########.fr       */
+/*   Created: 2023/01/25 14:56:37 by cbolat            #+#    #+#             */
+/*   Updated: 2023/01/25 14:56:39 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_read_left_to_right(int fd, char *d_line)
 		}
 		buff[rd_bytes] = '\0';
 		if (*buff == '\n')
-			break;
+			break ;
 		d_line = ft_strconcat(d_line, buff);
 	}
 	free(buff);

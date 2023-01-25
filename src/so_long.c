@@ -5,19 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 11:46:52 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/24 12:47:38 by cbolat           ###   ########.fr       */
+/*   Created: 2023/01/25 14:56:29 by cbolat            #+#    #+#             */
+/*   Updated: 2023/01/25 15:29:15 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	ft_exit(char *str)
-{
-	write(1, "Error: ", 7);
-	ft_printf("\033[31m%s\n\033[0m", str);
-	exit (0);
-}
 
 int	main(int argc, char **argv)
 {
@@ -37,4 +30,5 @@ int	main(int argc, char **argv)
 	//printf("%s", (char *)game->)
 	//ft_shell_print(&game);
 	//printf("%s",game.images.collectibles_path);
+	//while (1);
 }

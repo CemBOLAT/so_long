@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 13:25:21 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/23 13:25:22 by cbolat           ###   ########.fr       */
+/*   Created: 2023/01/25 14:56:45 by cbolat            #+#    #+#             */
+/*   Updated: 2023/01/25 14:56:46 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include    "get_next_line.h"
 
-size_t	ft_get_strlen(char *s)
+size_t	ft_g_strlen(char *s)
 {
 	size_t	i;
 
@@ -32,7 +32,7 @@ char	*ft_get_strchr(char *s, int c)
 	if (!s)
 		return (0);
 	if (c == '\0')
-		return ((char *)&s[ft_get_strlen(s)]);
+		return ((char *)&s[ft_g_strlen(s)]);
 	while (s[i] != '\0')
 	{
 		if (s[i] == (char) c)
@@ -42,7 +42,7 @@ char	*ft_get_strchr(char *s, int c)
 	return (0);
 }
 
-char	*ft_strconcat(char *d_line, char *buff)
+char	*ft_strconcat(char *d_line, char *b)
 {
 	size_t	i;
 	size_t	j;
@@ -53,9 +53,9 @@ char	*ft_strconcat(char *d_line, char *buff)
 		d_line = (char *)malloc(1 * sizeof(char));
 		d_line[0] = '\0';
 	}
-	if (!d_line || !buff)
+	if (!d_line || !b)
 		return (NULL);
-	str = malloc(sizeof(char) * ((ft_get_strlen(d_line) + ft_get_strlen(buff)) + 1));
+	str = malloc(sizeof(char) * ((ft_g_strlen(d_line) + ft_g_strlen(b)) + 1));
 	if (str == NULL)
 		return (NULL);
 	i = -1;
@@ -63,9 +63,9 @@ char	*ft_strconcat(char *d_line, char *buff)
 	if (d_line)
 		while (d_line[++i] != '\0')
 			str[i] = d_line[i];
-	while (buff[j] != '\0')
-		str[i++] = buff[j++];
-	str[ft_get_strlen(d_line) + ft_get_strlen(buff)] = '\0';
+	while (b[j] != '\0')
+		str[i++] = b[j++];
+	str[ft_g_strlen(d_line) + ft_g_strlen(b)] = '\0';
 	free(d_line);
 	return (str);
 }
@@ -112,7 +112,7 @@ char	*ft_new_dinamic_line(char *d_line)
 		free(d_line);
 		return (NULL);
 	}
-	str = (char *)malloc(sizeof(char) * (ft_get_strlen(d_line) - i + 1));
+	str = (char *)malloc(sizeof(char) * (ft_g_strlen(d_line) - i + 1));
 	if (!str)
 		return (NULL);
 	i++;

@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:36:04 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/24 12:38:29 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/25 15:43:34 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,5 @@ void	ft_minilibx_create(t_game *game)
 {
 	ft_import_data(game);
 	ft_import_images(game);
+	ft_key_comb(game);
 }

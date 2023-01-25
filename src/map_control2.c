@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 11:46:47 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/24 12:43:36 by cbolat           ###   ########.fr       */
+/*   Created: 2023/01/25 14:56:09 by cbolat            #+#    #+#             */
+/*   Updated: 2023/01/25 15:36:58 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,18 @@ void	ft_map_tour(t_game *game, int **mini_map, int x, int y)
 	return ;
 }
 
+void	ft_free_map(int **map, int y)
+{
+	int	i;
+	
+	i = 0;
+	while (i < y)
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
 
 void	ft_is_player_reach(t_game *game)
 {
@@ -79,7 +91,8 @@ void	ft_is_player_reach(t_game *game)
 	}
 	//mini_map[y - 1][game->map.width - 1] = 1;
 	ft_map_tour(game, mini_map, game->exit_x, game->exit_y);
-	ft_printf("%d %d %d\n",game->map.coin_number, game-> map.player_number, game->map.player_plus_coin_nbr);
+	//ft_printf("%d %d %d\n",game->map.coin_number, game-> map.player_number, game->map.player_plus_coin_nbr);
 	if (game->map.coin_number + game->map.player_number != game->map.player_plus_coin_nbr)
 		ft_exit("Player cannot reach exit and coins together");
+	ft_free_map(mini_map, game->map.height);
 }

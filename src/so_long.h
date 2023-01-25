@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:42:26 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/24 12:57:42 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/25 15:33:49 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_player
 	int	x;
 	int	y;
 	int	coin_collected;
-	int	move;
+	int	move_count;
 }	t_player;
 
 typedef struct s_map
@@ -95,5 +95,11 @@ void	ft_import_background(t_game *game);
 void	ft_import_map(t_game *game);
 void	ft_is_player_reach(t_game *game);
 void	ft_map_tour(t_game *game, int **mini_map, int x, int y);
+void	ft_free_map(int **map, int y);
+void	ft_exit_suc(char *str);
+int		ft_key_hook(int keycode, t_game *game);
+void	ft_step_count(t_game *game);
+void	ft_key_comb(t_game *game);
+int    ft_mouse_hook(int m_code, t_game *game);
 
 #endif
