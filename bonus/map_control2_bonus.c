@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_control2.c                                     :+:      :+:    :+:   */
+/*   map_control2_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:56:09 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/26 17:04:41 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/26 16:22:21 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_wall_control(t_game *game)
 {
@@ -39,7 +39,7 @@ void	ft_wall_control(t_game *game)
 void	ft_map_tour(t_game *game, int **mini_map, int x, int y)
 {
 	if (game->map.map_graph[y][x] == 'P' || game->map.map_graph[y][x] == 'C')
-		game->map.player_p_c_n += 1;
+		game->map.player_plus_coin_nbr += 1;
 	if (game->map.map_graph[y][x + 1] != '1' && mini_map[y][x + 1] < 1)
 	{
 		mini_map[y][x + 1] = mini_map[y][x] + 1;
@@ -88,9 +88,10 @@ void	ft_is_player_reach(t_game *game)
 		mini_map[y] = ft_calloc(game->map.width, sizeof(int));
 		y++;
 	}
+	//mini_map[y - 1][game->map.width - 1] = 1;
 	ft_map_tour(game, mini_map, game->exit_x, game->exit_y);
-	if
-	(game->map.coin_number + game->map.player_number != game->map.player_p_c_n)
+	//ft_printf("%d %d %d\n",game->map.coin_number, game-> map.player_number, game->map.player_plus_coin_nbr);
+	if (game->map.coin_number + game->map.player_number != game->map.player_plus_coin_nbr)
 		ft_exit("Player cannot reach exit and coins together");
 	ft_free_map(mini_map, game->map.height);
 }

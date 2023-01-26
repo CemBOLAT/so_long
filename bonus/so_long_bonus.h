@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/21 12:42:26 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/26 17:08:15 by cbolat           ###   ########.fr       */
+/*   Created: 2023/01/26 14:43:11 by cbolat            #+#    #+#             */
+/*   Updated: 2023/01/26 16:40:39 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # define IMAGE_SIZE 50
 
@@ -27,7 +27,14 @@ typedef struct s_images
 	char *wall_path;
 	char *exit_path;
 	char *background_path;
+	char *collectibles_path_bonus;
+	char *player_path_bonus;
+	char *wall_path_bonus;
+	char *enemy_path_bonus;
+	char *enemy_path;
+	char *background_path_bonus;
 	void *collectibles;
+	void *enemy;
 	void *player;
 	void *wall;
 	void *exit;
@@ -54,7 +61,7 @@ typedef struct s_map
 	int		exit_number;
 	int		unallowed_char_number;
 	int		wall_number;
-	int		player_p_c_n;
+	int		player_plus_coin_nbr;
 	char	*map_path;
 } t_map;
 
@@ -94,16 +101,19 @@ void	ft_is_player_reach(t_game *game);
 
 void	ft_minilibx_create(t_game *game);
 void	ft_import_data(t_game *game);
+void	ft_import_images(t_game *game);
 void	ft_import_background(t_game *game);
 void	ft_import_map(t_game *game);
 
 void	ft_step_count(t_game *game);
 void	ft_exit(char *str);
 void	ft_exit_suc(char *str);
+void	ft_display_moves(t_game *game);
 
 int		ft_key_hook(int keycode, t_game *game);
 void	ft_key_comb(t_game *game);
 int		ft_mouse_hook(int m_code, t_game *game);
 void	ft_image_move(int keycode, t_game *game, int x);
+void	ft_sprite(t_game *game);
 
 #endif

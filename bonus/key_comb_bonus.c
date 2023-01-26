@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_comb.c                                         :+:      :+:    :+:   */
+/*   key_comb_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:51:02 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/26 14:12:50 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/26 16:56:59 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_key_comb(t_game *game)
 {
@@ -35,6 +35,8 @@ int	ft_data_walking(int y, int x, t_game *game)
 		game->map.map_graph[game->player.y + y][game->player.x + x] = '0';
 		game->player.coin_collected++;
 	}
+	else if (game->map.map_graph[game->player.y + y][game->player.x + x] == 'V')
+		ft_exit("Enemy's killed you TRY AGAIN !");
 	else if (game->map.map_graph[game->player.y + y][game->player.x + x] == 'E')
 	{
 		if (game->player.coin_collected == game->map.coin_number)
@@ -43,6 +45,8 @@ int	ft_data_walking(int y, int x, t_game *game)
 			ft_printf("\033[31mYou cannot exit without collecting coins !\n\033[0m");
 		return (0);
 	}
+	game->map.map_graph[game->player.y + y][game->player.x + x] = 'P';
+	game->map.map_graph[game->player.y][game->player.x] = '0';
 	return (1);
 }
 
@@ -64,7 +68,8 @@ void	ft_image_move(int keycode, t_game *game, int x)
 			game->player.x * IMAGE_SIZE, game->player.y * IMAGE_SIZE);
 		game->player.y -= x;
 	}
-	ft_step_count(game);
+	ft_display_moves(game);
+	ft_sprite(game);
 	mlx_put_image_to_window(game->mlx.display_connector, game->mlx.window, game->images.background,
 		game->player.x * IMAGE_SIZE, game->player.y * IMAGE_SIZE);
 	mlx_put_image_to_window(game->mlx.display_connector, game->mlx.window, game->images.player,

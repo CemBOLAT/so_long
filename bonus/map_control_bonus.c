@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_control.c                                      :+:      :+:    :+:   */
+/*   map_control_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:56:03 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/26 17:05:11 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/26 16:21:00 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_rectangular_control(t_game *game)
 {
@@ -81,7 +80,7 @@ void	ft_scan_the_map(t_game *game)
 	game->map.exit_number = 0;
 	game->map.player_number = 0;
 	game->map.unallowed_char_number = 0;
-	game->map.player_p_c_n = 0;
+	game->map.player_plus_coin_nbr = 0;
 	y = -1;
 	while (++y < game->map.height)
 	{
@@ -103,7 +102,8 @@ void	ft_scan_the_map(t_game *game)
 				game->player.y = y;
 			}
 			else if (game->map.map_graph[y][x] != '1' &&
-					game->map.map_graph[y][x] != '0')
+					game->map.map_graph[y][x] != '0' &&
+					game->map.map_graph[y][x] != 'V')
 				game->map.unallowed_char_number += 1;
 		}
 	}
