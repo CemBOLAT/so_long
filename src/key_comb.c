@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:51:02 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/26 14:12:50 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/27 16:19:09 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int	ft_data_walking(int y, int x, t_game *game)
 	else if (game->map.map_graph[game->player.y + y][game->player.x + x] == 'E')
 	{
 		if (game->player.coin_collected == game->map.coin_number)
-			ft_exit_suc("Exit Success !\n");
+			ft_exit_suc("Exit Success !");
 		else
-			ft_printf("\033[31mYou cannot exit without collecting coins !\n\033[0m");
+			ft_warning("You cannot exit without collecting coins!");
 		return (0);
 	}
 	return (1);
@@ -52,23 +52,27 @@ void	ft_image_move(int keycode, t_game *game, int x)
 	{
 		if (ft_data_walking(0, x, game) == 0)
 			return ;
-		mlx_put_image_to_window(game->mlx.display_connector, game->mlx.window, game->images.background,
-			game->player.x * IMAGE_SIZE, game->player.y * IMAGE_SIZE);
+		mlx_put_image_to_window(game->mlx.display_connector, game->mlx.window,
+			game->images.background, game->player.x * IMAGE_SIZE,
+			game->player.y * IMAGE_SIZE);
 		game->player.x += x;
 	}
 	if (keycode == 13 || keycode == 1)
 	{
 		if (ft_data_walking(-x, 0, game) == 0)
 			return ;
-		mlx_put_image_to_window(game->mlx.display_connector, game->mlx.window, game->images.background,
+		mlx_put_image_to_window(game->mlx.display_connector,
+			game->mlx.window, game->images.background,
 			game->player.x * IMAGE_SIZE, game->player.y * IMAGE_SIZE);
 		game->player.y -= x;
 	}
 	ft_step_count(game);
-	mlx_put_image_to_window(game->mlx.display_connector, game->mlx.window, game->images.background,
-		game->player.x * IMAGE_SIZE, game->player.y * IMAGE_SIZE);
-	mlx_put_image_to_window(game->mlx.display_connector, game->mlx.window, game->images.player,
-		game->player.x * IMAGE_SIZE, game->player.y * IMAGE_SIZE);
+	mlx_put_image_to_window(game->mlx.display_connector, game->mlx.window,
+		game->images.background, game->player.x * IMAGE_SIZE,
+		game->player.y * IMAGE_SIZE);
+	mlx_put_image_to_window(game->mlx.display_connector,
+		game->mlx.window, game->images.player, game->player.x * IMAGE_SIZE,
+		game->player.y * IMAGE_SIZE);
 }
 
 int	ft_key_hook(int keycode, t_game *game)

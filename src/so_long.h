@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:42:26 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/26 17:08:15 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/27 15:59:13 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,26 @@
 
 # define IMAGE_SIZE 50
 
-#include "../libft/libft.h"
-#include "../get_next_line/get_next_line.h"
-#include "../ft_printf/ft_printf.h"
-#include "../minilibx/mlx.h"
+# include "../libft/libft.h"
+# include "../get_next_line/get_next_line.h"
+# include "../ft_printf/ft_printf.h"
+# include "../minilibx/mlx.h"
 
 typedef struct s_images
 {
-	char *collectibles_path;
-	char *player_path;
-	char *wall_path;
-	char *exit_path;
-	char *background_path;
-	void *collectibles;
-	void *player;
-	void *wall;
-	void *exit;
-	void *background;
-	int height;
-	int	width;
-} t_images;
+	char	*collectibles_path;
+	char	*player_path;
+	char	*wall_path;
+	char	*exit_path;
+	char	*background_path;
+	void	*collectibles;
+	void	*player;
+	void	*wall;
+	void	*exit;
+	void	*background;
+	int		height;
+	int		width;
+}	t_images;
 
 typedef struct s_player
 {
@@ -56,25 +56,25 @@ typedef struct s_map
 	int		wall_number;
 	int		player_p_c_n;
 	char	*map_path;
-} t_map;
+}	t_map;
 
 typedef struct s_mlx
 {
 	void	*display_connector;
 	void	*window;
 
-} t_mlx;
+}	t_mlx;
 
 typedef struct s_game
 {
-	struct s_map map;
-	struct s_player player;
-	struct s_images images;
-	struct s_mlx mlx;
-	int			exit_x;
-	int			exit_y;
+	struct s_map	map;
+	struct s_player	player;
+	struct s_images	images;
+	struct s_mlx	mlx;
+	int				exit_x;
+	int				exit_y;
 
-} t_game;
+}	t_game;
 
 void	ft_argument_control(char **argv);
 void	ft_image_control(t_game *game);
@@ -100,10 +100,12 @@ void	ft_import_map(t_game *game);
 void	ft_step_count(t_game *game);
 void	ft_exit(char *str);
 void	ft_exit_suc(char *str);
+void	ft_warning(char *str);
+void	ft_exit_and_free(char *line);
 
 int		ft_key_hook(int keycode, t_game *game);
 void	ft_key_comb(t_game *game);
 int		ft_mouse_hook(int m_code, t_game *game);
 void	ft_image_move(int keycode, t_game *game, int x);
-
+void	ft_scan_map_2(t_game *game, int y, int x);
 #endif

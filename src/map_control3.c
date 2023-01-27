@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   map_control3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 14:56:29 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/27 15:09:37 by cbolat           ###   ########.fr       */
+/*   Created: 2023/01/27 11:50:00 by cbolat            #+#    #+#             */
+/*   Updated: 2023/01/27 12:54:57 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+void	ft_scan_map_2(t_game *game, int y, int x)
 {
-	t_game	game;
-
-	if (argc != 2)
-		ft_exit("Invalid argument Number!");
-	ft_argument_control(argv);
-	ft_map_control(argv, &game);
-	ft_image_control(&game);
-	ft_image_control_2(&game);
-	ft_is_valid_map(&game);
-	ft_minilibx_create(&game);
-	mlx_loop(game.mlx.display_connector);
+	if (game->map.map_graph[y][x] == 'P')
+	{
+		game->map.player_number += 1;
+		game->player.x = x;
+		game->player.y = y;
+	}
+	else if (game->map.map_graph[y][x] != '1' &&
+		game->map.map_graph[y][x] != '0' &&
+		game->map.map_graph[y][x] != 'E' &&
+		game->map.map_graph[y][x] != 'P' &&
+		game->map.map_graph[y][x] != 'C')
+		game->map.unallowed_char_number += 1;
 }

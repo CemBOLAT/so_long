@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:36:04 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/26 17:00:17 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/27 16:29:07 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,26 @@ void	ft_import_background(t_game *game)
 	}
 }
 
+void	ft_import_map_2(t_game *game, int y, int x)
+{
+	if (game->map.map_graph[y][x] == '1')
+		mlx_put_image_to_window(game->mlx.display_connector,
+			game->mlx.window, game->images.wall,
+			x * IMAGE_SIZE, y * IMAGE_SIZE);
+	else if (game->map.map_graph[y][x] == '0')
+		mlx_put_image_to_window(game->mlx.display_connector,
+			game->mlx.window, game->images.background,
+			x * IMAGE_SIZE, y * IMAGE_SIZE);
+	else if (game->map.map_graph[y][x] == 'P')
+		mlx_put_image_to_window(game->mlx.display_connector,
+			game->mlx.window, game->images.player,
+			x * IMAGE_SIZE, y * IMAGE_SIZE);
+	else if (game->map.map_graph[y][x] == 'V')
+		mlx_put_image_to_window(game->mlx.display_connector,
+			game->mlx.window, game->images.enemy,
+			x * IMAGE_SIZE, y * IMAGE_SIZE);
+}
+
 void	ft_import_map(t_game *game)
 {
 	int	x;
@@ -76,37 +96,19 @@ void	ft_import_map(t_game *game)
 				mlx_put_image_to_window(game->mlx.display_connector,
 					game->mlx.window, game->images.collectibles,
 					x * IMAGE_SIZE, y * IMAGE_SIZE);
-			else if (game->map.map_graph[y][x] == 'P')
-				mlx_put_image_to_window(game->mlx.display_connector,
-					game->mlx.window, game->images.player,
-					x * IMAGE_SIZE, y * IMAGE_SIZE);
-			else if (game->map.map_graph[y][x] == '1')
-				mlx_put_image_to_window(game->mlx.display_connector,
-					game->mlx.window, game->images.wall,
-					x * IMAGE_SIZE, y * IMAGE_SIZE);
-			else if (game->map.map_graph[y][x] == '0')
-				mlx_put_image_to_window(game->mlx.display_connector,
-					game->mlx.window, game->images.background,
-					x * IMAGE_SIZE, y * IMAGE_SIZE);
-			else if (game->map.map_graph[y][x] == 'V')
-				mlx_put_image_to_window(game->mlx.display_connector,
-					game->mlx.window, game->images.enemy,
-					x * IMAGE_SIZE, y * IMAGE_SIZE);
+			else
+				ft_import_map_2(game, y, x);
 			x++;
 		}
 		y++;
 	}
-}
-
-void	ft_import_images(t_game *game)
-{
-	ft_import_background(game);
-	ft_import_map(game);
+	ft_display_moves(game);
 }
 
 void	ft_minilibx_create(t_game *game)
 {
 	ft_import_data(game);
-	ft_import_images(game);
+	ft_import_background(game);
+	ft_import_map(game);
 	ft_key_comb(game);
 }

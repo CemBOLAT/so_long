@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:43:26 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/26 14:43:37 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/27 16:23:52 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,5 @@ int	main(int argc, char **argv)
 	ft_is_valid_map(&game);
 	ft_wall_control(&game);
 	ft_minilibx_create(&game);
-	//ft_is_player_reach(&game);
 	mlx_loop(game.mlx.display_connector);
-	//printf("%s", (char *)game->)
-	//ft_shell_print(&game);
-	//printf("%s",game.images.collectibles_path);
-	//while (1);
 }

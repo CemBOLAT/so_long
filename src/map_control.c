@@ -6,10 +6,9 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:56:03 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/26 17:05:11 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/27 16:18:36 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "so_long.h"
 
@@ -26,7 +25,7 @@ void	ft_rectangular_control(t_game *game)
 	game->map.height = 0;
 	while (1)
 	{
-//		free(line);
+		free(line);
 		game->map.height++;
 		line = get_next_line(fd);
 		if (!line)
@@ -34,11 +33,7 @@ void	ft_rectangular_control(t_game *game)
 		if (line[0] == '\0')
 			break ;
 		if (game->map.width != (int)ft_strlen(line) && line[0] != '\0')
-		{
-			ft_exit("Map is not rectangular !");
-			free(line);
-		}
-		free(line);
+			ft_exit_and_free(line);
 	}
 	if (!line)
 		free(line);
@@ -47,29 +42,26 @@ void	ft_rectangular_control(t_game *game)
 
 void	ft_add_the_map(t_game *game)
 {
+	int		x;
 	int		y;
 	int		fd;
 	char	*line;
 
+	y = -1;
 	fd = open(game->map.map_path, O_RDONLY);
-	y = 0;
-	game->map.map_graph = malloc(sizeof(char *) * (game->map.width + 1));
-	if (!(game->map.map_graph))
-		ft_exit("MAP CAN NOT MALLOCED !");
-	while (y <= game->map.height)
+	game->map.map_graph = (char **)malloc(sizeof(char *) * game->map.height);
+	while (++y < game->map.height)
 	{
+		x = -1;
 		line = get_next_line(fd);
-		if (!line)
-			return ;
-		game->map.map_graph[y] = malloc(sizeof(char) * (ft_strlen(line) + 1));
-		if (!(game->map.map_graph[y]))
-			ft_exit("MAP CAN NOT MALLOCED !");
-		game->map.map_graph[y] = line;
-		game->map.map_graph[y][ft_strlen(line)] = '\0';
-		y++;
+		game->map.map_graph[y] = malloc(sizeof(char *) * game->map.width);
+		if (line == NULL)
+			break ;
+		while (++x < game->map.width)
+			game->map.map_graph[y][x] = line[x];
+		game->map.map_graph[y][x] = '\0';
+		free(line);
 	}
-	game->map.map_graph[y] = 0;
-	close(fd);
 }
 
 void	ft_scan_the_map(t_game *game)
@@ -77,11 +69,7 @@ void	ft_scan_the_map(t_game *game)
 	int	x;
 	int	y;
 
-	game->map.coin_number = 0;
-	game->map.exit_number = 0;
-	game->map.player_number = 0;
-	game->map.unallowed_char_number = 0;
-	game->map.player_p_c_n = 0;
+	x = -1;
 	y = -1;
 	while (++y < game->map.height)
 	{
@@ -96,15 +84,7 @@ void	ft_scan_the_map(t_game *game)
 				game->exit_x = x;
 				game->exit_y = y;
 			}
-			else if (game->map.map_graph[y][x] == 'P')
-			{
-				game->map.player_number += 1;
-				game->player.x = x;
-				game->player.y = y;
-			}
-			else if (game->map.map_graph[y][x] != '1' &&
-					game->map.map_graph[y][x] != '0')
-				game->map.unallowed_char_number += 1;
+			ft_scan_map_2(game, y, x);
 		}
 	}
 }
@@ -125,6 +105,13 @@ void	ft_is_valid_map(t_game *game)
 {
 	ft_rectangular_control(game);
 	ft_add_the_map(game);
+	game->player.coin_collected = 0;
+	game->map.coin_number = 0;
+	game->map.exit_number = 0;
+	game->map.player_number = 0;
+	game->map.unallowed_char_number = 0;
+	game->map.player_p_c_n = 0;
+	game->player.move_count = 0;
 	ft_scan_the_map(game);
 	ft_element_number_control(game);
 	ft_wall_control(game);

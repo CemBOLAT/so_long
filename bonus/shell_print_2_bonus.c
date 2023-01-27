@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   shell_print_2_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 14:56:29 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/27 15:09:37 by cbolat           ###   ########.fr       */
+/*   Created: 2023/01/27 16:38:53 by cbolat            #+#    #+#             */
+/*   Updated: 2023/01/27 16:40:46 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-int	main(int argc, char **argv)
+void	ft_step_count(t_game *game)
 {
-	t_game	game;
-
-	if (argc != 2)
-		ft_exit("Invalid argument Number!");
-	ft_argument_control(argv);
-	ft_map_control(argv, &game);
-	ft_image_control(&game);
-	ft_image_control_2(&game);
-	ft_is_valid_map(&game);
-	ft_minilibx_create(&game);
-	mlx_loop(game.mlx.display_connector);
+	game->player.move_count++;
 }

@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:46:37 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/26 16:00:49 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/27 13:58:09 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_image_control(t_game *game)
 	int	fd2;
 
 	fd = open("./textures/coin.xpm", O_RDONLY);
-	fd2 = open("./textures/coinb.xpm",O_RDONLY);
+	fd2 = open("./textures/coinb.xpm", O_RDONLY);
 	if (fd <= 0 || fd2 <= 0)
 		ft_exit("WRONG COIN PATH!");
 	close(fd);
