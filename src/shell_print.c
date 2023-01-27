@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:07:01 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/27 15:56:57 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/27 21:11:28 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_step_count(t_game *game)
 {
 	game->player.move_count += 1;
-	ft_printf("\033[32mStep\n\033[0m %d !\n", game->player.move_count);
+	ft_printf("\033[32mStep\n\033[0m%d !\n", game->player.move_count);
 }
 
 void	ft_exit(char *str)
