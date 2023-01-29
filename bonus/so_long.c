@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_bonus.c                                    :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 14:43:26 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/27 16:23:52 by cbolat           ###   ########.fr       */
+/*   Created: 2023/01/25 14:56:29 by cbolat            #+#    #+#             */
+/*   Updated: 2023/01/29 22:04:47 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int argc, char **argv)
 	ft_image_control(&game);
 	ft_image_control_2(&game);
 	ft_is_valid_map(&game);
-	ft_wall_control(&game);
 	ft_minilibx_create(&game);
 	mlx_loop(game.mlx.display_connector);
 }

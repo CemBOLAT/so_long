@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_control3.c                                     :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 11:50:00 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/29 21:28:50 by cbolat           ###   ########.fr       */
+/*   Created: 2023/01/29 21:09:44 by cbolat            #+#    #+#             */
+/*   Updated: 2023/01/29 22:46:36 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 
-void	ft_make_data_zero(t_game *game)
+void	ft_exit_free_map(char *str, t_game *game)
 {
-	game->player.coin_collected = 0;
-	game->map.coin_number = 0;
-	game->map.exit_number = 0;
-	game->map.player_number = 0;
-	game->map.unallowed_char_number = 0;
-	game->map.player_p_c_n = 0;
-	game->player.move_count = 0;
+	int	y;
+
+	y = -1;
+	while (++y < game->map.height)
+		free(game->map.map_graph[y]);
+	free(game->map.map_graph);
+	ft_exit(str);
 }

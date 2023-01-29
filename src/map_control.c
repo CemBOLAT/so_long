@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:56:03 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/27 16:18:36 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/29 21:30:22 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,11 @@ void	ft_rectangular_control(t_game *game)
 	close(fd);
 }
 
-void	ft_add_the_map(t_game *game)
+void	ft_add_the_map(t_game *game, int y, int x)
 {
-	int		x;
-	int		y;
 	int		fd;
 	char	*line;
 
-	y = -1;
 	fd = open(game->map.map_path, O_RDONLY);
 	game->map.map_graph = (char **)malloc(sizeof(char *) * game->map.height);
 	while (++y < game->map.height)
@@ -64,13 +61,8 @@ void	ft_add_the_map(t_game *game)
 	}
 }
 
-void	ft_scan_the_map(t_game *game)
+void	ft_scan_the_map(t_game *game, int y, int x)
 {
-	int	x;
-	int	y;
-
-	x = -1;
-	y = -1;
 	while (++y < game->map.height)
 	{
 		x = -1;
@@ -84,7 +76,15 @@ void	ft_scan_the_map(t_game *game)
 				game->exit_x = x;
 				game->exit_y = y;
 			}
-			ft_scan_map_2(game, y, x);
+			else if (game->map.map_graph[y][x] == 'P')
+			{
+				game->map.player_number += 1;
+				game->player.x = x;
+				game->player.y = y;
+			}
+			else if (game->map.map_graph[y][x] != '1' &&
+				game->map.map_graph[y][x] != '0')
+				game->map.unallowed_char_number += 1;
 		}
 	}
 }
@@ -92,27 +92,26 @@ void	ft_scan_the_map(t_game *game)
 void	ft_element_number_control(t_game *game)
 {
 	if (game->map.coin_number < 1)
-		ft_exit("MAP must have at least 1 COLLECTIBLES !");
+		ft_exit_free_map("MAP must have at least 1 COLLECTIBLES !", game);
 	else if (game->map.exit_number != 1)
-		ft_exit("MAP must have 1 EXIT !");
+		ft_exit_free_map("MAP must have 1 EXIT !", game);
 	else if (game->map.player_number != 1)
-		ft_exit("MAP must have 1 PLAYER !");
+		ft_exit_free_map("MAP must have 1 PLAYER !", game);
 	else if (game ->map.unallowed_char_number != 0)
-		ft_exit("The map must contain {0,1,E,P,C} elements !");
+		ft_exit_free_map("The map must contain {0,1,E,P,C} elements !", game);
 }
 
 void	ft_is_valid_map(t_game *game)
 {
+	int x;
+	int y;
+
+	x = -1;
+	y = -1;
 	ft_rectangular_control(game);
-	ft_add_the_map(game);
-	game->player.coin_collected = 0;
-	game->map.coin_number = 0;
-	game->map.exit_number = 0;
-	game->map.player_number = 0;
-	game->map.unallowed_char_number = 0;
-	game->map.player_p_c_n = 0;
-	game->player.move_count = 0;
-	ft_scan_the_map(game);
+	ft_add_the_map(game,y, x);
+	ft_make_data_zero(game);
+	ft_scan_the_map(game,y, x);
 	ft_element_number_control(game);
 	ft_wall_control(game);
 	ft_is_player_reach(game);

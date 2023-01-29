@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:51:02 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/27 16:19:09 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/29 21:52:51 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	ft_key_comb(t_game *game)
 {
-	mlx_hook(game->mlx.window, 2, 1L << 2, ft_key_hook, game);
-	mlx_hook(game->mlx.window, 17, 1L << 2, ft_mouse_hook, game);
+	mlx_hook(game->mlx.window, KEYPRESS, BUTTONPRESSMASK, ft_key_hook, game);
+	mlx_hook(game->mlx.window, DESTROYNOTIFY, BUTTONPRESSMASK, ft_mouse_hook, game);
 }
 
 int	ft_mouse_hook(int m_code, t_game *game)
 {
 	(void)m_code;
 	(void)game;
-	ft_exit_suc("Exit Success !\n");
+	ft_exit_suc("Exit Success !");
 	return (0);
 }
 
@@ -38,7 +38,7 @@ int	ft_data_walking(int y, int x, t_game *game)
 	else if (game->map.map_graph[game->player.y + y][game->player.x + x] == 'E')
 	{
 		if (game->player.coin_collected == game->map.coin_number)
-			ft_exit_suc("Exit Success !");
+			ft_exit_free_map("Exit Success !", game);
 		else
 			ft_warning("You cannot exit without collecting coins!");
 		return (0);
@@ -48,7 +48,7 @@ int	ft_data_walking(int y, int x, t_game *game)
 
 void	ft_image_move(int keycode, t_game *game, int x)
 {
-	if (keycode == 2 || keycode == 0)
+	if (keycode == D || keycode == A)
 	{
 		if (ft_data_walking(0, x, game) == 0)
 			return ;
@@ -57,7 +57,7 @@ void	ft_image_move(int keycode, t_game *game, int x)
 			game->player.y * IMAGE_SIZE);
 		game->player.x += x;
 	}
-	if (keycode == 13 || keycode == 1)
+	if (keycode == W || keycode == S)
 	{
 		if (ft_data_walking(-x, 0, game) == 0)
 			return ;
@@ -77,11 +77,11 @@ void	ft_image_move(int keycode, t_game *game, int x)
 
 int	ft_key_hook(int keycode, t_game *game)
 {
-	if (keycode == 53)
-		ft_exit("Exit Success");
-	else if (keycode == 2 || keycode == 13)
+	if (keycode == ESC)
+		ft_exit_free_map("Exit Success !", game);
+	else if (keycode == D || keycode == W)
 		ft_image_move(keycode, game, 1);
-	else if (keycode == 0 || keycode == 1)
+	else if (keycode == A || keycode == S)
 		ft_image_move(keycode, game, -1);
 	return (0);
 }
