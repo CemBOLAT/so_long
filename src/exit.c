@@ -12,7 +12,6 @@
 
 #include "so_long.h"
 
-
 void	ft_exit_free_map(char *str, t_game *game)
 {
 	int	y;
