@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:56:03 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/29 22:03:26 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/31 01:50:53 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ void	ft_rectangular_control(t_game *game)
 	fd = open(game->map.map_path, O_RDONLY);
 	line = get_next_line(fd);
 	if (!line)
-		ft_exit ("GET NEXT LINE IS BROKEN !");
+	{
+		free(line);
+		ft_exit("GET NEXT LINE IS BROKEN !");
+	}
 	game->map.width = ft_strlen(line);
 	game->map.height = 0;
 	while (1)
@@ -108,9 +111,9 @@ void	ft_is_valid_map(t_game *game)
 	x = -1;
 	y = -1;
 	ft_rectangular_control(game);
-	ft_add_the_map(game, y, x);
+	ft_add_the_map(game,y, x);
 	ft_make_data_zero(game);
-	ft_scan_the_map(game, y, x);
+	ft_scan_the_map(game,y, x);
 	ft_element_number_control(game);
 	ft_wall_control(game);
 	ft_is_player_reach(game);

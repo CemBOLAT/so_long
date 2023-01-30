@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:07:01 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/27 21:11:28 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/31 02:14:40 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void	ft_exit_and_free(char *line)
 {
 	ft_printf("Error: \033[31mMap is not rectangular !\n\033[0m");
 	free(line);
+	system("leaks so_long");
 	exit (0);
 }

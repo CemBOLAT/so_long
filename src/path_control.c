@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:46:37 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/26 14:17:37 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/31 01:28:18 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ void	ft_map_control(char **argv, t_game *game)
 	str = ft_strjoin("./maps/", argv[1]);
 	fd = open(str, O_RDONLY);
 	if (fd <= 0)
+	{
+		free(str);
 		ft_exit("WRONG MAP NAME! ");
+	}
 	game->map.map_path = str;
 }

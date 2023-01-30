@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 22:20:06 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/29 22:36:56 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/31 02:26:49 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int	ft_animation(t_game *game)
 		game->pos_player = 0;
 	}
 	game->pos_player++;
-	ft_import_map(game);
+	//ft_import_map(game);
 	return (0);
 }

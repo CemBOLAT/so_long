@@ -6,11 +6,31 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 21:09:44 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/29 22:03:17 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/31 02:10:33 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+void	ft_exit_free_suc(char *str, t_game *game)
+{
+	int	y;
+
+	y = -1;
+	while (++y < game->map.height)
+		free(game->map.map_graph[y]);
+	free(game->map.map_graph);
+	free(game->map.map_path);
+	mlx_destroy_image(game->mlx.display_connector, game->images.background);
+	mlx_destroy_image(game->mlx.display_connector, game->images.collectibles);
+	mlx_destroy_image(game->mlx.display_connector, game->images.exit);
+	mlx_destroy_image(game->mlx.display_connector, game->images.player);
+	mlx_destroy_image(game->mlx.display_connector, game->images.wall);
+	mlx_destroy_image(game->mlx.display_connector, game->images.enemy);
+	mlx_destroy_window((game)->mlx.display_connector, (game)->mlx.window);
+	system("leaks so_long_bonus");
+	ft_exit_suc(str);
+}
 
 void	ft_exit_free_map(char *str, t_game *game)
 {
@@ -20,11 +40,25 @@ void	ft_exit_free_map(char *str, t_game *game)
 	while (++y < game->map.height)
 		free(game->map.map_graph[y]);
 	free(game->map.map_graph);
+	free(game->map.map_path);
+	system("leaks so_long_bonus");
 	ft_exit(str);
 }
 
-void	ft_exit(char *str)
+void	ft_display_moves(t_game *game)
 {
-	ft_printf("Error: \033[31m%s\n\033[0m", str);
-	exit (0);
+	char	*str;
+
+	str = ft_itoa(game->player.move_count);
+	mlx_put_image_to_window(game->mlx.display_connector,
+		game->mlx.window, game->images.wall, 2 * IMAGE_SIZE,
+		0 * IMAGE_SIZE);
+	mlx_put_image_to_window(game->mlx.display_connector,
+		game->mlx.window, game->images.wall, 1 * IMAGE_SIZE,
+		0 * IMAGE_SIZE);
+	mlx_string_put(game->mlx.display_connector,
+		game->mlx.window, 50, 20, 000000, "MOVES: ");
+	mlx_string_put(game->mlx.display_connector,
+		game->mlx.window, 100, 20, 0x000000, str);
+	free(str);
 }

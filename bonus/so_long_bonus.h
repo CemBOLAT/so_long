@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:42:26 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/29 22:29:05 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/31 01:42:56 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,5 +125,6 @@ void	ft_make_data_zero(t_game *game);
 void	ft_exit_free_map(char *str, t_game *game);
 void	ft_exit_free_map_suc(char *str, t_game *game);
 void	ft_display_moves(t_game *map);
+void	ft_exit_free_suc(char *str, t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:42:26 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/29 21:30:08 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/01/31 01:31:54 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,6 @@ int		ft_mouse_hook(int m_code, t_game *game);
 void	ft_image_move(int keycode, t_game *game, int x);
 void	ft_make_data_zero(t_game *game);
 void	ft_exit_free_map(char *str, t_game *game);
+void	ft_exit_free_suc(char *str, t_game *game);
 
 #endif
