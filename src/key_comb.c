@@ -21,8 +21,7 @@ void	ft_key_comb(t_game *game)
 int	ft_mouse_hook(int m_code, t_game *game)
 {
 	(void)m_code;
-	(void)game;
-	ft_exit_suc("Exit Success !");
+	ft_exit_free_map("Exit Success !");
 	return (0);
 }
 
