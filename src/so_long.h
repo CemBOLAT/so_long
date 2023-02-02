@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:42:26 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/31 01:31:54 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/02/02 22:07:45 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,13 @@
 # include "../get_next_line/get_next_line.h"
 # include "../ft_printf/ft_printf.h"
 # include "../minilibx/mlx.h"
+
 # define A 0
 # define S 1
 # define D 2
 # define W 13
 # define ESC 53
-# define KEYPRESS 2
-# define DESTROYNOTIFY 17
-# define BUTTONPRESSMASK 1L << 2
+
 typedef struct s_images
 {
 	char	*collectibles_path;
@@ -57,7 +56,7 @@ typedef struct s_map
 	int		height;
 	int		width;
 	int		coin_number;
-	int		player_number;
+	int		player_nbr;
 	int		exit_number;
 	int		unallowed_char_number;
 	int		wall_number;
@@ -114,7 +113,7 @@ void	ft_key_comb(t_game *game);
 int		ft_mouse_hook(int m_code, t_game *game);
 void	ft_image_move(int keycode, t_game *game, int x);
 void	ft_make_data_zero(t_game *game);
-void	ft_exit_free_map(char *str, t_game *game);
+void	ft_f_exit(char *str, t_game *game);
 void	ft_exit_free_suc(char *str, t_game *game);
 
 #endif

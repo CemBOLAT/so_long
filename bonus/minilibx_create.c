@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:36:04 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/31 02:10:09 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/02/02 22:34:35 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	ft_import_data(t_game *game)
 	game->images.exit = mlx_xpm_file_to_image(game->mlx.display_connector,
 			game->images.exit_path, &game->images.width, &game->images.height);
 	game->images.player = mlx_xpm_file_to_image(game->mlx.display_connector,
-			game->images.player_path, &game->images.width, &game->images.height);
+			game->images.player_path, &game->images.width,
+			&game->images.height);
 	game->images.wall = mlx_xpm_file_to_image(game->mlx.display_connector,
 			game->images.wall_path, &game->images.width, &game->images.height);
 	game->images.enemy = mlx_xpm_file_to_image(game->mlx.display_connector,

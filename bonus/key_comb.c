@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:51:02 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/31 02:27:19 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/02/02 23:22:22 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	ft_key_comb(t_game *game)
 {
-	mlx_hook(game->mlx.window, KEYPRESS, BUTTONPRESSMASK, ft_key_hook, game);
-	mlx_hook(game->mlx.window, DESTROYNOTIFY, BUTTONPRESSMASK, ft_mouse_hook, game);
-	//mlx_loop_hook(game->mlx.display_connector, ft_animation, game);
+	mlx_hook(game->mlx.window, 2, 1L << 2, ft_key_hook, game);
+	mlx_hook(game->mlx.window, 17, 1L << 2, ft_mouse_hook, game);
 }
 
 int	ft_mouse_hook(int m_code, t_game *game)

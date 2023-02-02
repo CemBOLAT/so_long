@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:46:37 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/31 01:54:40 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/02/02 23:53:22 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,11 @@ void	ft_argument_control(char **argv)
 void	ft_image_control(t_game *game)
 {
 	int	fd;
-	int	fd2;
 
 	fd = open("./textures/coin.xpm", O_RDONLY);
-	fd2 = open("./textures/coinb.xpm", O_RDONLY);
-	if (fd <= 0 || fd2 <= 0)
+	if (fd <= 0)
 		ft_exit("WRONG COIN PATH!");
 	close(fd);
-	close(fd2);
 	fd = open("./textures/background.xpm", O_RDONLY);
 	if (fd <= 0)
 		ft_exit("WRONG BACKGROUND PATH!");
@@ -41,7 +38,6 @@ void	ft_image_control(t_game *game)
 		ft_exit("WRONG EXIT PATH!");
 	close(fd);
 	game->images.collectibles_path = "./textures/coin.xpm";
-	game->images.collectibles_path_bonus = "./textures/coinb.xpm";
 	game->images.exit_path = "./textures/exit.xpm";
 	game->images.background_path = "./textures/background.xpm";
 }
@@ -49,28 +45,21 @@ void	ft_image_control(t_game *game)
 void	ft_image_control_2(t_game *game)
 {
 	int	fd;
-	int	fd2;
 
-	fd = open("./textures/playerb.xpm", O_RDONLY);
-	fd2 = open("./textures/player.xpm", O_RDONLY);
-	if (fd <= 0 || fd2 <= 0)
+	fd = open("./textures/player.xpm", O_RDONLY);
+	if (fd <= 0)
 		ft_exit("WRONG PLAYER PATH!");
 	close(fd);
-	close(fd2);
-	fd = open("./textures/enemyb.xpm", O_RDONLY);
-	fd2 = open("./textures/enemy.xpm", O_RDONLY);
-	if (fd <= 0 || fd2 <= 0)
+	fd = open("./textures/enemy.xpm", O_RDONLY);
+	if (fd <= 0)
 		ft_exit("WRONG ENEMY PATH!");
 	close(fd);
-	close(fd2);
 	fd = open("./textures/wall.xpm", O_RDONLY);
 	if (fd <= 0)
 		ft_exit("WRONG WALL PATH!");
 	close(fd);
-	game->images.player_path_bonus = "./textures/playerb.xpm";
 	game->images.player_path = "./textures/player.xpm";
-	game->images.enemy_path = "./textures/enemyb.xpm";
-	game->images.enemy_path_bonus = "./textures/enemy.xpm";
+	game->images.enemy_path = "./textures/enemy.xpm";
 	game->images.wall_path = "./textures/wall.xpm";
 }
 

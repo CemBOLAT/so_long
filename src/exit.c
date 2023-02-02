@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 21:09:44 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/31 01:32:49 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/02/02 23:56:44 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	ft_exit_free_suc(char *str, t_game *game)
 	mlx_destroy_image(game->mlx.display_connector, game->images.exit);
 	mlx_destroy_image(game->mlx.display_connector, game->images.player);
 	mlx_destroy_image(game->mlx.display_connector, game->images.wall);
-	mlx_destroy_window((game)->mlx.display_connector, (game)->mlx.window);
+	mlx_destroy_window(game->mlx.display_connector, game->mlx.window);
 	system("leaks so_long");
 	ft_exit_suc(str);
 }
 
-void	ft_exit_free_map(char *str, t_game *game)
+void	ft_f_exit(char *str, t_game *game)
 {
 	int	y;
 

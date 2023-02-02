@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:56:09 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/29 21:13:21 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/02/02 22:06:25 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	ft_wall_control(t_game *game)
 		if (y == 0)
 			while (x < game->map.width)
 				if (game->map.map_graph[y][x++] != '1')
-					ft_exit_free_map("The map must has surrounded by the walls !", game);
+					ft_f_exit("The map must surrounded by the walls !", game);
 		if (y == game->map.height - 1)
 			while (x < game->map.width)
 				if (game->map.map_graph[y][x++] != '1')
-					ft_exit_free_map("The map must has surrounded by the walls !", game);
+					ft_f_exit("The map must surrounded by the walls !", game);
 		if (game->map.map_graph[y][0] != '1' ||
 				game->map.map_graph[y][game->map.width - 1] != '1')
-			ft_exit_free_map("The map must has surrounded by the walls !", game);
+			ft_f_exit("The map must surrounded by the walls !", game);
 		y++;
 	}
 }
@@ -89,11 +89,10 @@ void	ft_is_player_reach(t_game *game)
 		y++;
 	}
 	ft_map_tour(game, mini_map, game->exit_x, game->exit_y);
-	if
-	(game->map.coin_number + game->map.player_number != game->map.player_p_c_n)
+	if (game->map.coin_number + game->map.player_nbr != game->map.player_p_c_n)
 	{
 		ft_free_map(mini_map, game->map.height);
-		ft_exit_free_map("Player cannot reach exit and coins together", game);
+		ft_f_exit("Player cannot reach exit and coins together", game);
 	}
 	ft_free_map(mini_map, game->map.height);
 }
