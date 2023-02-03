@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:51:02 by cbolat            #+#    #+#             */
-/*   Updated: 2023/02/03 00:02:47 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/02/03 10:13:39 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_key_comb(t_game *game)
 {
 	mlx_hook(game->mlx.window, 2, 1L << 2, ft_key_hook, game);
-	mlx_hook(game->mlx.window, 17, 1L << 0, ft_mouse_hook, game);
+	mlx_hook(game->mlx.window, 17, 1L << 2, ft_mouse_hook, game);
 }
 
 int	ft_mouse_hook(int m_code, t_game *game)
@@ -23,7 +23,6 @@ int	ft_mouse_hook(int m_code, t_game *game)
 	(void)m_code;
 	(void)game;
 	ft_exit("Exit Success !");
-	// baksana şuna bi
 	return (0);
 }
 

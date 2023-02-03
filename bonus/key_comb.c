@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:51:02 by cbolat            #+#    #+#             */
-/*   Updated: 2023/02/02 23:22:22 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/02/03 10:25:24 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	ft_key_comb(t_game *game)
 int	ft_mouse_hook(int m_code, t_game *game)
 {
 	(void)m_code;
-	ft_exit_free_suc("Exit Success !", game);
+	(void)game;
+	ft_exit("Exit Success !");
 	return (0);
 }
 

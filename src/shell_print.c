@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:07:01 by cbolat            #+#    #+#             */
-/*   Updated: 2023/02/02 22:10:13 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/02/03 10:14:43 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_step_count(t_game *game)
 void	ft_exit(char *str)
 {
 	ft_printf("Error: \033[31m%s\n\033[0m", str);
-	system("leaks so_long");
 	exit (0);
 }
 
@@ -40,6 +39,5 @@ void	ft_exit_and_free(char *line)
 {
 	ft_printf("Error: \033[31mMap is not rectangular !\n\033[0m");
 	free(line);
-	system("leaks so_long");
 	exit (0);
 }
