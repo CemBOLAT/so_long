@@ -59,8 +59,6 @@ While the bonus part is not mandatory, you can earn extra points by implementing
 - Adding sprite animations.
 - Displaying the movement count directly on the screen instead of in the shell. < Done by me >
 
-Please note that this project is primarily intended to teach you graphics and game development concepts. Spend a reasonable amount of time on it and prioritize other assignments and projects.
-
 ## Used Functions
 
 | Function         | Description                                                                                              |
@@ -103,6 +101,4 @@ To learn more about MinilibX and get official documentation, you can refer to th
 - [MinilibX Official GitHub Repository](https://github.com/42Paris/minilibx-linux): The official GitHub repository for MinilibX Linux version contains source code and usage examples.
 - [MinilibX MacOS Documentation](https://harm-smits.github.io/42docs/libs/minilibx): Detailed information about MinilibX for MacOS is available in this documentation.
 - [MinilibX Linux Documentation](https://harm-smits.github.io/42docs/libs/minilibx-linux): Detailed information about MinilibX for Linux is available in this documentation.
-
-These resources will help you get started with MinilibX and graphics programming. If you have any further questions, please don't hesitate to ask.
 
