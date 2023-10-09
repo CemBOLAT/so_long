@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:51:02 by cbolat            #+#    #+#             */
-/*   Updated: 2023/02/03 10:13:39 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/10/10 01:04:17 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	ft_data_walking(int y, int x, t_game *game)
 			ft_exit_free_suc("Exit Success !", game);
 		else
 			ft_warning("You cannot exit without collecting coins!");
-		return (0);
 	}
 	return (1);
 }
@@ -66,6 +65,7 @@ void	ft_image_move(int keycode, t_game *game, int x)
 			game->player.x * IMAGE_SIZE, game->player.y * IMAGE_SIZE);
 		game->player.y -= x;
 	}
+	ft_check_exit(game, keycode);
 	ft_step_count(game);
 	mlx_put_image_to_window(game->mlx.display_connector,
 		game->mlx.window, game->images.player, game->player.x * IMAGE_SIZE,

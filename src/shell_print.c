@@ -6,11 +6,12 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:07:01 by cbolat            #+#    #+#             */
-/*   Updated: 2023/02/03 10:14:43 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/10/10 00:16:29 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdlib.h>
 
 void	ft_step_count(t_game *game)
 {

@@ -6,11 +6,12 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 21:09:44 by cbolat            #+#    #+#             */
-/*   Updated: 2023/02/03 10:13:23 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/10/10 00:15:18 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdlib.h>
 
 void	ft_exit_free_suc(char *str, t_game *game)
 {

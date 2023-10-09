@@ -6,11 +6,12 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:56:09 by cbolat            #+#    #+#             */
-/*   Updated: 2023/02/03 10:21:32 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/10/10 00:16:07 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdlib.h>
 
 void	ft_wall_control(t_game *game)
 {
