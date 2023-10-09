@@ -6,11 +6,12 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:56:45 by cbolat            #+#    #+#             */
-/*   Updated: 2023/01/25 14:56:46 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/10/10 00:12:29 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    "get_next_line.h"
+#include "get_next_line.h"
+#include <stdlib.h>
 
 size_t	ft_g_strlen(char *s)
 {

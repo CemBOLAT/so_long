@@ -6,14 +6,14 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:42:26 by cbolat            #+#    #+#             */
-/*   Updated: 2023/02/02 23:53:28 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/10/10 01:06:15 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 
-# define IMAGE_SIZE 50
+# define IMAGE_SIZE 32
 
 # include "../libft/libft.h"
 # include "../get_next_line/get_next_line.h"
@@ -118,5 +118,6 @@ void	ft_f_exit(char *str, t_game *game);
 void	ft_f_exit_suc(char *str, t_game *game);
 void	ft_display_moves(t_game *map);
 void	ft_exit_free_suc(char *str, t_game *game);
+void	ft_check_exit(t_game *game, int keycode);
 
 #endif

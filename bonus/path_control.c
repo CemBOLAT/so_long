@@ -6,11 +6,13 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:46:37 by cbolat            #+#    #+#             */
-/*   Updated: 2023/02/02 23:53:22 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/10/10 00:17:56 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+#include <fcntl.h>
+#include <stdlib.h>
 
 void	ft_argument_control(char **argv)
 {

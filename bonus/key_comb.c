@@ -6,7 +6,7 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:51:02 by cbolat            #+#    #+#             */
-/*   Updated: 2023/02/03 10:25:24 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/10/10 01:07:54 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	ft_image_move(int keycode, t_game *game, int x)
 		game->player.y -= x;
 	}
 	ft_step_count(game);
+	ft_check_exit(game, keycode);
 	ft_display_moves(game);
 	mlx_put_image_to_window(game->mlx.display_connector,
 		game->mlx.window, game->images.player, game->player.x * IMAGE_SIZE,

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbrhexa.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbolat <cbolat@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 12:51:21 by cbolat            #+#    #+#             */
-/*   Updated: 2022/10/26 15:17:07 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/10/10 01:07:11 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_printhexa(unsigned int n, char c)
 		ft_putchar(n + 87);
 	else if (c == 'X' && n >= 10 && n <= 15)
 		ft_putchar(n + 55);
-}	
+}
 
 int	ft_putnbrhexa(char c, unsigned int nbr)
 {

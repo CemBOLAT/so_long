@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbolat <cbolat@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:03:08 by cbolat            #+#    #+#             */
-/*   Updated: 2022/10/26 15:17:12 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/10/10 01:07:21 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_printhexaptr(unsigned long long n)
 		else
 			ft_putchar(n + 48);
 	}
-}	
+}
 
 int	ft_putptr(unsigned long long p)
 {

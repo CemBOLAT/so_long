@@ -6,11 +6,12 @@
 /*   By: cbolat <cbolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 21:09:44 by cbolat            #+#    #+#             */
-/*   Updated: 2023/02/03 10:25:02 by cbolat           ###   ########.fr       */
+/*   Updated: 2023/10/10 00:47:48 by cbolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+#include <stdlib.h>
 
 void	ft_exit_free_suc(char *str, t_game *game)
 {
@@ -54,9 +55,12 @@ void	ft_display_moves(t_game *game)
 	mlx_put_image_to_window(game->mlx.display_connector,
 		game->mlx.window, game->images.wall, 1 * IMAGE_SIZE,
 		0 * IMAGE_SIZE);
+	mlx_put_image_to_window(game->mlx.display_connector,
+		game->mlx.window, game->images.wall, 0 * IMAGE_SIZE,
+		0 * IMAGE_SIZE);
 	mlx_string_put(game->mlx.display_connector,
-		game->mlx.window, 50, 20, 000000, "MOVES: ");
+		game->mlx.window, 20, 20, 000000, "MOVES: ");
 	mlx_string_put(game->mlx.display_connector,
-		game->mlx.window, 100, 20, 0x000000, str);
+		game->mlx.window, 70, 20, 0x000000, str);
 	free(str);
 }
